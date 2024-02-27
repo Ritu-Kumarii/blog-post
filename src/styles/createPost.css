@@ -1,0 +1,72 @@
+/* Additional styling for CreatePost component */
+.create-post-form {
+  width: 40%;
+  height: 100%;
+}
+
+.create-post-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+.create-post-form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+.create-post-form .form-group .form-items{
+  display:flex;
+  width: 100%;
+  align-items: left;
+  flex-direction: column;
+  
+}
+.theme-checkbox{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.theme-checkbox label, .theme-checkbox input{
+  width:50%;
+  text-align: left;
+
+}
+.create-post-form input,
+.create-post-form select,
+.create-post-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.create-post-form button {
+  background-color: #007bff; 
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Blog Posts List Styles */
+.blog-posts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.blog-post {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.blog-post:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
