@@ -1,0 +1,67 @@
+import styled from 'styled-components';
+
+export const CreatePostFormContainer = styled.form`
+  width: 40%;
+  height: 100%;
+`;
+
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+  }
+
+  .form-items {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+`;
+
+export const ThemeCheckbox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  label, input {
+    width: 50%;
+    text-align: left;
+  }
+`;
+
+export const FormInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+`;
+
+export const FormSelect = styled.select`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+`;
+
+export const FormTextarea = styled.textarea`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+`;
+
+export const FormButton = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+`;
