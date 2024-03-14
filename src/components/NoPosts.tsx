@@ -1,5 +1,4 @@
 import React from "react";
-// Import the styled components
 import { NoPostsContainer, NoPostsText } from "../styles/NoPostsStyles"; // Adjust the import path as necessary
 
 interface NoPostsProps {

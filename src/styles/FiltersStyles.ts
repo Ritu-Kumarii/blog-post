@@ -18,3 +18,18 @@ export const Filter = styled.div`
   align-items: center;
   gap: 1rem;
 `;
+
+export const ClearButton = styled.button`
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #4d4d4d;
+  color: white;
+  cursor: pointer;
+  margin-left: 1rem;
+
+  &:hover {
+    background-color: #0a315a;
+  }
+`;

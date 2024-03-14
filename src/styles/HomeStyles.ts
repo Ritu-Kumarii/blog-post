@@ -18,15 +18,24 @@ export const PostContainer = styled.div`
 
 export const PostList = styled.div`
   display: grid;
-  grid-template-rows: repeat(4, 1fr); 
-  gap: 1rem;
+  grid-gap: 1rem;
+
+  grid-template-rows: repeat(5, 1fr); 
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
   }
 
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 992px) {
+    grid-template-rows: repeat(3, 1fr);
   }
 
+  @media (max-width: 768px) {
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-rows: 1fr;
+  }
+  
 `;

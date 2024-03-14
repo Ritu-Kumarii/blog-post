@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getFromLocalStorage, setLocalStorage } from "../utils/localStorage";
 import { PostType } from "../types";
+import { PostContainer } from "../styles/HomeStyles";
+import { PostImage, PostHeader, PostDate, PostActions, LikeButton, ContinueReading } from "../styles/Post";
+import { PostInfo } from "../styles/PostDetailsStyles";
 
 const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString("en-IN", {
@@ -21,7 +24,8 @@ const formatTime = (dateString: string): string => {
 const Post: React.FC<{ post: PostType }> = ({ post }) => {
   const [likes, setLikes] = useState(post.likes || 0);
 
-  const handleLike = () => {
+  const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     const newLikesCount = likes + 1;
     setLikes(newLikesCount);
 
@@ -38,33 +42,27 @@ const Post: React.FC<{ post: PostType }> = ({ post }) => {
   };
 
   return (
-    <div className="post">
-      <img src={post.image} alt={post.title} className="post-image" />
-      <div className="post-info">
-        <Link to={`/post/${post.id}`}>
-          <h3>{post.title}</h3>
-        </Link>
-        <p>
-          <Link to={`/author/${post.author}`}>By {post.author}</Link>
-        </p>
-        <p>{post.content.substring(0, 150)}...</p>
-      </div>
-
-      <div className="post-actions">
-        <button className="like-button" onClick={handleLike}>
+    <PostContainer>
+      <PostHeader>
+          <PostDate>
+            {formatDate(post.createdAt)} at {formatTime(post.createdAt)}
+          </PostDate>
+        </PostHeader>
+      <PostImage src={post.image} alt={post.title} />
+      <PostInfo>
+        <h3>{post.title}</h3>
+        <p>By {post.author}</p>
+        <p>{post.content.substring(0, 60)}...</p>
+      </PostInfo>
+      <PostActions>
+        <LikeButton onClick={handleLike}>
           👍 {likes}
-        </button>
-        <Link to={`/post/${post.id}`} className="post-action-link">
-          Continue Reading
+        </LikeButton>
+        <Link to={`/post/${post.id}`}>
+        <ContinueReading>Continue Reading</ContinueReading>
         </Link>
-      </div>
-
-      <div style={{ fontSize: "0.8rem" }}>
-        <p>
-          {formatDate(post.createdAt)} at {formatTime(post.createdAt)}
-        </p>
-      </div>
-    </div>
+      </PostActions>
+    </PostContainer>
   );
 };
 

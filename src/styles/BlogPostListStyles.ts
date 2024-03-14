@@ -5,6 +5,10 @@ export const BlogPostsListContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
+  & a {
+    text-decoration: none;
+    color: inherit; 
 `;
 
 export const PostCard = styled.div`
@@ -13,7 +17,7 @@ export const PostCard = styled.div`
   padding: 15px;
   margin-bottom: 20px;
   cursor: pointer;
-  height: 400px; // Fixed height for the card
+  height: 400px; 
   display: flex;
   flex-direction: column;
 
@@ -27,6 +31,7 @@ export const PostCard = styled.div`
   h3, p {
     margin: 5px 0; 
   }
+  
 `;
 
 export const BlogPost = styled.div`

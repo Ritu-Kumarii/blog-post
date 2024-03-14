@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setAuthor } from '../store';
 import { getFromLocalStorage } from "../utils/localStorage";
 import NoPosts from "../components/NoPosts";
-import { PostDetailsContainer, PostInfo } from "../styles/PostDetailsStyles"; 
+import { PostDetailsContainer, PostInfo, EditButton } from "../styles/PostDetailsStyles"; 
 
 interface Post {
   id: string;
@@ -54,7 +54,7 @@ const PostDetails: React.FC = () => {
               loading="lazy"
             />
           </PostInfo>
-          <Link to={`/post/${postId}/edit`}><button>Edit Post</button></Link>
+          <Link to={`/post/${postId}/edit`}><EditButton>Edit Post</EditButton></Link>
         </>
       )}
     </PostDetailsContainer>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiltersContainer, Filter } from "../styles/FiltersStyles"; // Ensure the path is correct
+import { FiltersContainer, Filter, ClearButton } from "../styles/FiltersStyles"; 
 import { getFromLocalStorage } from "../utils/localStorage";
 import { allowedAuthors, blogThemesAvailable, readerGroups } from "../constants";
 import { useSearchParams } from "react-router-dom";
@@ -12,7 +12,7 @@ const Filters: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const storedPosts = getFromLocalStorage('blogPosts'); // Ensure you're accessing the correct key in local storage
+    const storedPosts = getFromLocalStorage('blogPosts'); 
     if (Array.isArray(storedPosts)) {
       dispatch(loadPosts(storedPosts));
       const uniqueAuthors = [...new Set(storedPosts.map(post => post.author))];
@@ -33,6 +33,11 @@ const Filters: React.FC = () => {
       newSearchParams.delete(name);
     }
     setSearchParams(newSearchParams);
+  };
+
+  const handleClearFilters = () => {
+    setSearchParams({});
+    dispatch(setAuthor(''));
   };
 
   const sortByOptions = [
@@ -93,6 +98,8 @@ const Filters: React.FC = () => {
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </select>
+        <ClearButton onClick={handleClearFilters}>Clear</ClearButton>
+
       </Filter>
     </FiltersContainer>
   );

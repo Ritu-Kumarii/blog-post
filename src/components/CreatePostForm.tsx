@@ -12,6 +12,9 @@ import {
   FormTextarea,
   FormButton,
   ThemeCheckbox,
+  FormError,
+  ButtonContainer,
+  CancelButton,
 } from "../styles/CreatePostFormStyles";
 import { allowedAuthors, blogThemesAvailable, readerGroups } from "../constants";
 import CheckboxGroup from './CheckboxGroup';
@@ -62,23 +65,23 @@ const CreatePostForm: React.FC = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.title.trim()) {
-      newErrors.title = "Title is required";
+      newErrors.title = "* Title is required *";
     }
 
     if (!formData.author) {
-      newErrors.author = "Author is required";
+      newErrors.author = "* Author is required *";
     }
 
     if (formData.themes.length === 0) {
-      newErrors.theme = "At least one theme must be selected";
+      newErrors.theme = "* At least one theme must be selected *";
     }
 
     if (!formData.readerGroup) {
-      newErrors.readerGroup = "Reader Group is required";
+      newErrors.readerGroup = "* Reader Group is required *";
     }
 
     if (!formData.content.trim()) {
-      newErrors.content = "Content is required";
+      newErrors.content = "* Content is required *";
     }
 
     setErrors(newErrors);
@@ -116,6 +119,13 @@ const CreatePostForm: React.FC = () => {
       }
     }
   };
+  const handleCancel = () => {
+    if (postId) {
+      navigate(`/post/${postId}`);
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <CreatePostFormContainer onSubmit={handleSubmit}>
@@ -129,7 +139,7 @@ const CreatePostForm: React.FC = () => {
           value={formData.title}
           onChange={handleChange}
         />
-        {errors.title && <p className="error">{errors.title}</p>}
+        {errors.title && <FormError>{errors.title}</FormError>}
       </FormGroup>
 
       <FormGroup>
@@ -142,7 +152,7 @@ const CreatePostForm: React.FC = () => {
           value={formData.content}
           onChange={handleChange}
         />
-        {errors.content && <p className="error">{errors.content}</p>}
+        {errors.content && <FormError>{errors.content}</FormError>}
       </FormGroup>
 
       <FormGroup>
@@ -159,7 +169,7 @@ const CreatePostForm: React.FC = () => {
           <option key={author} value={author}>{author}</option>
           ))}
         </FormInput>
-        {errors.author && <p className="error">{errors.author}</p>}
+        {errors.author && <FormError>{errors.author}</FormError>}
       </FormGroup>
 
       <FormGroup>
@@ -171,7 +181,7 @@ const CreatePostForm: React.FC = () => {
             onChange={handleCheckboxChange}
           />
         </ThemeCheckbox>
-        {errors.theme && <p className="error">{errors.theme}</p>}
+        {errors.theme && <FormError>{errors.theme}</FormError>}
       </FormGroup>
 
       <FormGroup>
@@ -182,11 +192,11 @@ const CreatePostForm: React.FC = () => {
           value={formData.readerGroup || ''}
           onChange={handleChange}
         />
-        {errors.readerGroup && <p className="error">{errors.readerGroup}</p>}
+        {errors.readerGroup && <FormError>{errors.readerGroup}</FormError>}
       </FormGroup>
 
       <FormGroup>
-      <label htmlFor="image">Image for the Post:</label>
+      <label htmlFor="image">Image URL for the Post:</label>
         <FormInput
           type="text"
           id="image"
@@ -197,7 +207,10 @@ const CreatePostForm: React.FC = () => {
         />
       </FormGroup>
 
+      <ButtonContainer>
       <FormButton type="submit">{postId ? "Edit" : "Save"}</FormButton>
+      <CancelButton onClick={handleCancel}>Cancel</CancelButton> 
+    </ButtonContainer>
     </CreatePostFormContainer>
   );
 };

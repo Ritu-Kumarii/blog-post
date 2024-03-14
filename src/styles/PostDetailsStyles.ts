@@ -21,3 +21,16 @@ export const PostInfo = styled.div`
     border-radius: 20px;
   }
 `;
+
+export const EditButton = styled.button`
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0a315a;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #0056b3; 
+  }
+`;
