@@ -1,0 +1,135 @@
+/* Styling for BlogPostsList component */
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.post-card h3 {
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  margin-bottom: 5px;
+}
+
+.post-card .author-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.post-card .author-info img {
+  border-radius: 50%;
+  margin-right: 5px;
+}
+/* Post container and responsive list styles */
+.post-container {
+  padding: 1rem;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .post-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .post-list {
+    grid-template-columns: 1fr;
+  }
+}
+/* Post responsive styles */
+.post {
+  /* max-height: 480px; */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: white;
+  color: #333;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post button.like-button {
+  background-color: #f1f2f3;
+  color: #0c2949;
+  width: fit-content;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.post button.like-button:hover {
+  color: white;
+  background-color: rgb(226, 27, 27);
+}
+
+.post .post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post .post-action-link {
+  color: #0c2949;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.post a {
+  text-decoration: none;
+  color: #0c2949;
+}
+
+.post img {
+  width: 100%;
+  height: 240px;
+  object-fit: scale-down;
+  border-radius: 5px;
+  background-color: #f1f2f3;
+}
+
+.post button {
+  margin-right: 5px;
+  background-color: #1e3a58;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.post button:hover {
+  background-color: #0056b3;
+}
